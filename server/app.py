@@ -92,9 +92,9 @@ with gr.Blocks(title="TRAFFIX Visualization", theme=gr.themes.Soft()) as demo:
 # Mount Gradio over FastAPI root
 app = gr.mount_gradio_app(app, demo, path="/")
 
-def run_server():
+def main():
     import uvicorn
     uvicorn.run("server.app:app", host="0.0.0.0", port=7860)
 
 if __name__ == "__main__":
-    run_server()
+    main()
