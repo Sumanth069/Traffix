@@ -23,7 +23,7 @@ def log_end(success: bool, steps: int, rewards: list[float]) -> None:
 def run_inference():
     api_base = os.environ.get("API_BASE_URL", "https://api.openai.com/v1")
     model_name = os.environ.get("MODEL_NAME", "gpt-4o-mini")
-    hf_token = os.environ.get("HF_TOKEN", "dummy-hf-token")
+    hf_token = os.environ.get("HF_TOKEN")
     
     client = OpenAI(
         base_url=api_base,

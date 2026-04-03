@@ -19,9 +19,15 @@ class StepRequest(BaseModel):
 def health():
     return {"status": "ok"}
 
+from typing import Optional, Dict, Any
+
 @app.post("/reset", response_model=Observation)
-def api_reset(req: ResetRequest):
-    return _env.reset(req.task)
+def api_reset(req: Optional[Dict[str, Any]] = None):
+    # Evaluator might send `null` or empty body. Fallback to "easy".
+    task = "easy"
+    if req and "task" in req:
+        task = req["task"]
+    return _env.reset(task)
 
 @app.post("/step", response_model=StepResponse)
 def api_step(req: StepRequest):
