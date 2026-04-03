@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "traffix"
+version = "1.0.0"
+description = "TRAFFIX — Intelligent Traffic Decision Environment"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pydantic>=2.0.0",
+    "openai>=1.0.0",
+    "gradio>=4.0.0",
+    "numpy",
+    "fastapi",
+    "uvicorn"
+]
