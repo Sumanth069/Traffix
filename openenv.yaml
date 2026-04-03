@@ -1,0 +1,14 @@
+name: traffix
+version: 1.0.0
+description: "TRAFFIX — Intelligent Traffic Decision Environment"
+schema_version: "1.0"
+entrypoint: inference.py
+tasks:
+  - id: easy
+    description: "Green Wave Timing: one lane has traffic."
+  - id: medium
+    description: "Congestion Reduction: all lanes have traffic."
+  - id: hard
+    description: "Full Optimization: Heavy traffic + violations."
+requirements:
+  - requirements.txt
