@@ -6,9 +6,12 @@ entrypoint: inference.py
 tasks:
   - id: easy
     description: "Green Wave Timing: one lane has traffic."
+    grader: graders/easy_grader.py
   - id: medium
     description: "Congestion Reduction: all lanes have traffic."
+    grader: graders/medium_grader.py
   - id: hard
     description: "Full Optimization: Heavy traffic + violations."
+    grader: graders/hard_grader.py
 requirements:
   - requirements.txt
