@@ -20,4 +20,4 @@ def score(logs: list[dict]) -> float:
     violation_score = max(0.0, 1.0 - (violations / 10.0))
     
     composite_score = (flow_score * 0.5) + (violation_score * 0.5)
-    return max(0.0, min(1.0, composite_score))
+    return min(0.99, max(0.01, composite_score))

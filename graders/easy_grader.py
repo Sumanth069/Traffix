@@ -9,5 +9,5 @@ def score(logs: list[dict]) -> float:
             total_flow += step["info"]["flow"]
             
     # Normalize score by clearing the total initial vehicles
-    flow_score = min(1.0, max(0.0, total_flow / 15.0))
+    flow_score = min(0.99, max(0.01, total_flow / 15.0))
     return flow_score
