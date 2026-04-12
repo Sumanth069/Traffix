@@ -16,9 +16,9 @@ def log_step(step: int, action: str, reward: float, done: bool, error: str) -> N
         flush=True,
     )
 
-def log_end(success: bool, steps: int, rewards: list[float]) -> None:
+def log_end(success: bool, steps: int, score: float, rewards: list[float]) -> None:
     rewards_str = ",".join(f"{r:.2f}" for r in rewards)
-    print(f"[END] success={str(success).lower()} steps={steps} rewards={rewards_str}", flush=True)
+    print(f"[END] success={str(success).lower()} steps={steps} score={score:.3f} rewards={rewards_str}", flush=True)
 
 def run_inference():
     api_base = os.environ.get("API_BASE_URL", "https://api.openai.com/v1")
@@ -94,8 +94,9 @@ def run_inference():
             
             log_step(step=step_count, action=action_str, reward=reward, done=done, error=error_msg)
             
-        success = sum(rewards) / max(1, step_count) > 0.5 
-        log_end(success=success, steps=step_count, rewards=rewards)
+        score_val = min(0.99, max(0.01, sum(rewards) / max(1, step_count)))
+        success = score_val > 0.5 
+        log_end(success=success, steps=step_count, score=score_val, rewards=rewards)
 
 if __name__ == "__main__":
     run_inference()
